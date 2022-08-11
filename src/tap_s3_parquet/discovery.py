@@ -18,6 +18,7 @@ class Discover:
     def get_catalog(self) -> Dict:
         logger.info("Starting tap discovery")
         streams = self._discover_streams()
+        streams[0]["schema"].pop("$schema")
         catalog = {"streams": streams}
         logger.info("Finished tap discovery")
         return catalog
