@@ -60,6 +60,7 @@ class S3:
         logger.debug(f"Checking bucket {bucket} for keys matching {search_pattern}")
         # TODO:  Add paginator logic? What if these wr dicts get huge?
         all_objs = wr.s3.list_objects(s3_path)
+        logger.info(f"Found `{len(all_objs)}` objects(s)")
         objs_sizes = wr.s3.size_objects(all_objs)
         not_empty_objs = [x for x in all_objs if objs_sizes[x] != 0]
         matched_objs = [
