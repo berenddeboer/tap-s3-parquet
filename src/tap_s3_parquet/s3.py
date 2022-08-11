@@ -66,6 +66,7 @@ class S3:
         matched_objs = [
             x for x in not_empty_objs if matcher.search(os.path.basename(x))
         ]
+        logger.info(f"Matched `{len(matched_objs)}` objects(s)")
 
         return matched_objs
 
